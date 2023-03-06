@@ -1,0 +1,186 @@
+body{
+    background: rgba(0, 0, 0, 0.8) url('background1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-attachment: scroll;
+    color: #ffffff;
+    background-blend-mode: darken;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-width: fit-content;
+}
+img[id^="file_image"]{
+    width: 600px;
+    height: 250px;
+    display:block;
+    margin:auto;
+}
+video[id^="file_video"]{
+    width: 600px;
+    height: 250px;
+    display:block;
+    margin:auto;
+}
+audio{
+    display:block;
+    margin:auto;
+}
+div[id^="wrapper0"],div[id^="wrapper1"],div[id^="wrapper2"]{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+}
+div[id^="wrapper1"]{
+    flex: 1;
+    padding-top: 5vh;
+    margin: 0 auto;
+}
+div[id^="wrapper2"]{
+    margin-left: auto;
+}
+span[id^="wrapper_summary"]{
+    display: none;
+}
+label[id^="label_summary"]{
+    display: block;
+}
+table[id^="table_summary"]{
+    display: none;
+}
+input[id^=verify_quiz_online]{
+    width: 280px;
+}
+input[id^="yes_user_option"]{
+      /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  /* background-color only for content */
+  background: #bbbbbb;
+  background-clip: content-box;
+  border: 1px solid #bbbbbb;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+  }
+input[id^="yes_user_option"]:checked {
+    padding: 2px;
+    border: 1px solid #bbbbbb;
+    background: #bbbbbb;
+    background-color: #e61212;
+  }
+button[id^="btn_center"]{
+    margin-right: 10px;
+    height: fit-content;
+    width: 300px;
+    min-width: fit-content;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+button[id^="btn_center"]:hover{
+    background: scroll;
+}
+button[id^="btn_special"]{
+    margin-right: 10px;
+    width: fit-content;
+    height: min-content;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: 
+    space-between;
+}
+.container{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+.nav__logo{
+    margin-left: 2%;
+    padding-bottom:1fr;
+}
+
+.nav__list{
+    list-style: none;
+    display: flex;
+    column-gap: 20px;
+}
+.nav__link{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+.nav__link::after{
+    content: '';
+    position: absolute;
+    left: 0;bottom: 0;
+    width: 100%;height: 2px;
+    background-color: rgb(105, 3, 3);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s;
+}
+.nav__link:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+div[id^="support_"]{
+    display:block;
+    visibility: hidden;
+}
+audio[id^="audio_support_"]{
+    max-height: 15px;
+    width: 100px;
+}
+div[id^="wrapper_instructions"],div[id^="wrapper_replys"]{
+    padding-left: 2%;
+    text-align: left;
+}
+input[id^=places0],input[id^=places1],input[id^=places2],input[id^=places3],input[id^=places4]{
+    margin-left: 40%;
+  }
+button[id^="btn_special"]{
+    border-radius: 1em;
+    background-color: #ffffff;
+}
+button[id^="button_next"]{
+    min-width: fit-content;
+    max-height: 200px;
+    height: fit-content;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 3px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: x-large;
+    border: #ffffff 1px solid;
+    border-radius: 5%;
+    padding: 2%;
+}
+button[id^="button_next"]:hover{
+    animation: neon 5s infinite;
+}
+div[id^="div_support"]:hover{
+    cursor: pointer;
+}
+input{
+    cursor: pointer;
+}
+@keyframes neon {
+    0%, 39%, 41%, 59%, 61%, 100% {
+        text-shadow:
+        #ffffff 0 0 12px,
+        #ffffff 0 0 24px,
+        #ffffff 0 0 36px;
+    }
+    40%, 60%{
+        text-shadow:none;
+    }
+}
+button:hover{
+    cursor:pointer;
+}
