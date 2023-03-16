@@ -1,4 +1,4 @@
-
+console.info("Versión:1.1.1")
 
 function show_hide_content(show_hide_content_situation) {
     switch (show_hide_content_situation) {
