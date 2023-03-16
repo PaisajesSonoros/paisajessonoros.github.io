@@ -77,8 +77,10 @@ function addInfo(number) {
 }
 function addLastQuestions() {
   var user_replies = new Object;
-  user_replies["¿Conoces Menorca?¿En qué grado estás familiarizado/a o relacionado/a con la isla?"] = document.getElementById("last_0").value;
-  user_replies["¿Tienes algún tipo de conocimiento o formación en Acústica?"] = document.getElementById("last_1").value;
+  let last_0 = document.getElementsByName("last_0")
+  let last_1 = document.getElementsByName("last_1")
+  user_replies["¿Conoces Menorca?¿En qué grado estás familiarizado/a o relacionado/a con la isla?"] = GetCheckedValue(last_0);
+  user_replies["¿Tienes algún tipo de conocimiento o formación en Acústica?"] = GetCheckedValue(last_1);
   last_user_replies.push(user_replies);
 }
 function next_option(question_wrapper_number) {
