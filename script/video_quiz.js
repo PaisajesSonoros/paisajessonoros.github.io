@@ -30,6 +30,16 @@ function hideOptions() {
   document.getElementById("question5").style.display = "none";
   document.getElementById("question6").style.display = "none";
 }
+function GetCheckedValue(element) {
+  let replies;
+  for (let i = 0; i < element.length; i++) {    
+    if (element[i].checked == true) {
+      replies = element[i].value;
+    }
+  }
+  return replies;
+}
+
 function addInfo(number) {
   var places_replies = new Object;
   if (number > 3) {
@@ -39,21 +49,31 @@ function addInfo(number) {
     name_actual_scenary = "Maó";
     number_places_questions_replied = 1;
   }
+
   places_replies["Name_Scenary"] = name_actual_scenary;
   places_replies["Places_Number"] = number_places_questions_replied;
   places_replies["Recording_Number"] = number;
-  places_replies["Agradable/Placentero"] = document.getElementById("places0"+number).value;
-  places_replies["Sin Actividad/Estático"] = document.getElementById("places1"+number).value;
-  places_replies["Desagradable/Molesto"] = document.getElementById("places2"+number).value;
-  places_replies["Con Actividad/Dinámico"] = document.getElementById("places3"+number).value;
-  places_replies["En general, ¿Cómo describirías la calidad acústica del entorno que escuchas?"] = document.getElementById("places4"+number).value;
-  places_replies["¿Cuánto tiempo permanecerías en un lugar con un ambiente sonoro como este?"] = document.getElementById("places5"+number).value;
-  places_replies["¿Para cuál de los siguientes contextos urbanos crees que es adecuado el entorno acústico que escuchas?"] = document.getElementById("places6"+number).value;
-  places_replies["¿A qué período del año crees que se corresponde el entorno sonoro que escuchas?"] = document.getElementById("places7"+number).value;
 
+  let places0 = document.getElementsByName("places0"+number);
+  let places1 = document.getElementsByName("places1"+number);
+  let places2 = document.getElementsByName("places2"+number);
+  let places3 = document.getElementsByName("places3"+number);
+  let places4 = document.getElementsByName("places4"+number);
+  let places5 = document.getElementsByName("places5"+number);
+  let places6 = document.getElementsByName("places6"+number);
+  let places7 = document.getElementsByName("places7"+number);
+  
+  places_replies["Agradable/Placentero"] = GetCheckedValue(places0);
+  places_replies["Sin Actividad/Estático"] = GetCheckedValue(places1);
+  places_replies["Desagradable/Molesto"] = GetCheckedValue(places2);
+  places_replies["Con Actividad/Dinámico"] = GetCheckedValue(places3);
+  places_replies["En general, ¿Cómo describirías la calidad acústica del entorno que escuchas?"] = GetCheckedValue(places4);
+  places_replies["¿Cuánto tiempo permanecerías en un lugar con un ambiente sonoro como este?"] = GetCheckedValue(places5);
+  places_replies["¿Para cuál de los siguientes contextos urbanos crees que es adecuado el entorno acústico que escuchas?"] = GetCheckedValue(places6);
+  places_replies["¿A qué período del año crees que se corresponde el entorno sonoro que escuchas?"] = GetCheckedValue(places7);
+  console.info(places_replies)
   all_places_replies.push(places_replies);
-  console.table(all_places_replies)
-  document.getElementById("wrapper_files"+(question_wrapper_number-1)).innerHTML = "";
+  document.getElementById("wrapper_files"+(number-1)).innerHTML = "";
 }
 function addLastQuestions() {
   var user_replies = new Object;
