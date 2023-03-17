@@ -42,17 +42,20 @@ function GetCheckedValue(element) {
 
 function addInfo(number) {
   var places_replies = new Object;
+  let recordingNumber;
   if (number > 3) {
     name_actual_scenary = "Ciutadella";
     number_places_questions_replied = 0;
+    recordingNumber = number - 1;
   }else{
     name_actual_scenary = "Maó";
     number_places_questions_replied = 1;
+    recordingNumber = number - 4;
   }
 
   places_replies["Name_Scenary"] = name_actual_scenary;
   places_replies["Places_Number"] = number_places_questions_replied;
-  places_replies["Recording_Number"] = number;
+  places_replies["Recording_Number"] = recordingNumber;
 
   let places0 = document.getElementsByName("places0"+number);
   let places1 = document.getElementsByName("places1"+number);
