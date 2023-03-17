@@ -93,6 +93,7 @@ function next_option(question_wrapper_number) {
 
 function last_question() {
     hideOptions();    
+    addInfo(6); 
     document.getElementById("question_final").style.display = "flex";
 }
 
