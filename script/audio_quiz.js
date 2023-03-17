@@ -45,11 +45,11 @@ function addInfo(number) {
   var places_replies = new Object;
   let recordingNumber;
   if (number > 3) {
-    name_actual_scenary = "Ciutadella";
+    name_actual_scenary = "Maó";
     number_places_questions_replied = 0;
     recordingNumber = number - 1;
   }else{
-    name_actual_scenary = "Maó";
+    name_actual_scenary = "Ciutadella";
     number_places_questions_replied = 1;
     recordingNumber = number - 4;
   }
