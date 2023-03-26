@@ -76,7 +76,7 @@ function addInfo(number) {
   places_replies["¿A qué período del año crees que se corresponde el entorno sonoro que escuchas?"] = GetCheckedValue(places7);
   console.info(places_replies)
   all_places_replies.push(places_replies);
-  document.getElementById("wrapper_files"+(number-1)).innerHTML = "";
+  document.getElementById("wrapper_files"+(number)).innerHTML = "";
 }
 function addLastQuestions() {
   var user_replies = new Object;

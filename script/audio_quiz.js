@@ -75,9 +75,8 @@ function addInfo(number) {
   places_replies["¿Cuánto tiempo permanecerías en un lugar con un ambiente sonoro como este?"] = GetCheckedValue(places5);
   places_replies["¿Para cuál de los siguientes contextos urbanos crees que es adecuado el entorno acústico que escuchas?"] = GetCheckedValue(places6);
   places_replies["¿A qué período del año crees que se corresponde el entorno sonoro que escuchas?"] = GetCheckedValue(places7);
-  console.info(places_replies)
   all_places_replies.push(places_replies);
-  document.getElementById("wrapper_files"+(number-1)).innerHTML = "";
+  document.getElementById("wrapper_files"+(number)).innerHTML = "";
 }
 function addLastQuestions() {
   var user_replies = new Object;
