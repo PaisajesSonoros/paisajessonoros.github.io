@@ -770,6 +770,14 @@ function DrawBase() {
             document.getElementById("canvasGraph"+index+graph).style.display = "block";
             var c = document.getElementById("myCanvas"+index+graph);
             var ctx = c.getContext("2d");
+            // Limpiamos el lienzo.
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 300, 300);
+
+
+
+            ctx.fillStyle = "black";
+            ctx.strokeStyle = "black";
             ctx.lineWidth = 1;
             ctx.moveTo(150, 10);
             ctx.lineWidth = 0.5;
@@ -782,7 +790,7 @@ function DrawBase() {
 
             ctx.moveTo(10, 75);
             ctx.lineTo(290, 75);
-
+            
             ctx.stroke();
             ctx.font = "11.5px Arial";
             //Añadimos la etiqueta Agradable.
