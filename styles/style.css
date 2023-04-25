@@ -163,7 +163,7 @@ button[id^="btn_"]:hover{
 }
 canvas{
     border: 1px solid black;
-    margin-left: 25%;
+    /*margin-left: 25%;*/
 }
 button[class^="select_button"]{
     background-color: transparent;
