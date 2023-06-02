@@ -6,7 +6,8 @@ div[id^="tableScenary"]{
     display: block;justify-content:center;
 }
 div[id^="canvasGraph"]{
-    display:none;width:350px;height: 400px;min-width: 300px;
+    display:none;width:5vw;height: 8vh;
+    min-height: 400px;min-width: 300px;
 }
 canvas[id^=myCanvas]{
     background:white;
