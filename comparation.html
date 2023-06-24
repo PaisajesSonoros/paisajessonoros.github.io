@@ -22,9 +22,9 @@
     <script src="./script/resultados/Canvas/DrawChronologyGraph.js" defer></script>
     <script src="./script/resultados/Canvas/DrawParticipantGraph.js" defer></script>
     <script src="./script/resultados/Canvas/DrawInformationScenary.js" defer></script>
-    <script src="./script/resultados/Canvas/DrawScenaryGraph.js" defer></script>
+    <script src="./script/resultados/Canvas/DrawScenaryComparationGraph.js" defer></script>
     <script src="./script/resultados/Canvas/FunctionsCanvas.js" defer></script>
-    <script src="./script/resultados/Canvas/DrawScatterGraph.js" defer></script>
+    <script src="./script/resultados/Canvas/DrawScatterComparationGraph.js" defer></script>
 
     <title>Soundscape Questionnaire</title>
 </head>
@@ -124,10 +124,12 @@
         <figure id="figure">
           <h2>Resultados de las Preguntas Generales
             <select id="generalOptions">
-              <option value="0">Notas HearWHO</option>              
+              <option value="0-comparation">Notas HearWHO</option>
+              <option value="1-comparation">Conocimiento del Lugar</option>    
+              <option value="2-comparation">Formación en Acústica</option>          
             </select>
           </h2>
-          <h3 id="statementQuestion">¿Tienes algún tipo de conocimiento o formación en Acústica?</h3>
+          <h3 id="statementQuestion">La puntuación obtenida en el test HearWHO:</h3>
           <span id="participantCanvas">
             <canvas id="participantChart"></canvas>
           </span>          
@@ -137,124 +139,82 @@
     </div>
     <br>
     <div id="scenaryGraph1" style="background-color: #191919;">
-      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Escenario 1: <b id="scenaryName1">Escenario 1</b></h2>
-      <section class="cols-2">        
+      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Escenario 1: <b id="scenaryName1">Ciutadella</b></h2>
+      <section class="cols-1">        
         <figure class="figureScenary" id="figure">
-            <h2>Comparativa entre grabaciones
-              <select id="recordingOptions1">
-                <option value="1-0">Grabación 1</option>
-                <option value="1-1">Grabación 2</option>
-                <option value="1-2">Grabación 3</option>              
-              </select>
-            </h2>
             
-            <span id="graphLeft1">
-              <canvas id="renderRadarChart1"></canvas>
+            <span id="graphLeft10">
+              <canvas id="renderRadarChart10"></canvas>
             </span>
             <h4>Opciones a mostrar:</h4>
             <span id="optionsScenary1">
-              <button id="changeChart2Scatter1" value="1-0">Descriptor Puntos</button>              
+              <button id="change2Scatter10" onclick="drawScatterOrRadar('scatter',1,0)">Descriptor Puntos</button>
+              <button id="change2Radar10" onclick="drawScatterOrRadar('radar',1,0)">Descriptor Radar</button>     
             </span>
         </figure>
-
         <figure class="figureScenary" id="figure">
-          <h2>Información del Escenario:
-            <select id="featuresOptions1">
-                <option value="yearPeriod-1-0">Periodo del Año</option>
-                <option value="urbanContext-1-0">Contexto Urbano</option>
-                <option value="acousticQuality-1-0">Calidad Acústica</option>
-                <option value="soundscapeTime-1-0">Tiempo en el Ambiente Sonoro</option>               
-            </select>
-        </h2>
-            <span id="graphRight1">
-              <canvas id="renderPieChart1"></canvas>
-            </span>
-            <span id="summaryFeatureOption1">
-
-            </span>
             
+          <span id="graphLeft11">
+            <canvas id="renderRadarChart11"></canvas>
+          </span>
+          <h4>Opciones a mostrar:</h4>
+          <span id="optionsScenary1">
+            <button id="change2Scatter11" onclick="drawScatterOrRadar('scatter',1,1)">Descriptor Puntos</button>
+            <button id="change2Radar11" onclick="drawScatterOrRadar('radar',1,1)">Descriptor Radar</button>     
+          </span>
         </figure>
-
+        <figure class="figureScenary" id="figure">
+            
+          <span id="graphLeft12">
+            <canvas id="renderRadarChart12"></canvas>
+          </span>
+          <h4>Opciones a mostrar:</h4>
+          <span id="optionsScenary1">
+            <button id="change2Scatter12" onclick="drawScatterOrRadar('scatter',1,2)">Descriptor Puntos</button>
+            <button id="change2Radar12" onclick="drawScatterOrRadar('radar',1,2)">Descriptor Radar</button>     
+          </span>
+        </figure>
+      </section>
+    </div>
+    <div id="scenaryGraph2" style="background-color: #191919;">
+      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Escenario 1: <b id="scenaryName2">Maó</b></h2>
+      <section class="cols-1">        
+        <figure class="figureScenary" id="figure">
+            
+            <span id="graphLeft20">
+              <canvas id="renderRadarChart20"></canvas>
+            </span>
+            <h4>Opciones a mostrar:</h4>
+            <span id="optionsScenary1">
+              <button id="change2Scatter20" value="2-0">Descriptor Puntos</button>
+              <button id="change2Radar20" value="2-0">Descriptor Radar</button>     
+            </span>
+        </figure>
+        <figure class="figureScenary" id="figure">
+            
+          <span id="graphLeft21">
+            <canvas id="renderRadarChart21"></canvas>
+          </span>
+          <h4>Opciones a mostrar:</h4>
+          <span id="optionsScenary22">
+            <button id="change2Scatter21" value="2-1">Descriptor Puntos</button>
+            <button id="change2Radar21" value="2-1">Descriptor Radar</button>     
+          </span>
+        </figure>
+        <figure class="figureScenary" id="figure">
+            
+          <span id="graphLeft22">
+            <canvas id="renderRadarChart22"></canvas>
+          </span>
+          <h4>Opciones a mostrar:</h4>
+          <span id="optionsScenary1">
+            <button id="change2Scatter32" value="3-2">Descriptor Puntos</button>
+            <button id="change2Radar32" value="3-2">Descriptor Radar</button>     
+          </span>
+        </figure>
       </section>
     </div>
     <br>
-    <div id="scenaryGraph2" style="background-color: #191919;display: none;">
-      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Escenario 2: <b id="scenaryName2">Escenario 2</b></h2>
-      <section class="cols-2">        
-        <figure class="figureScenary" id="figure">
-            <h2>Comparativa entre grabaciones:
-              <select id="recordingOptions2">
-                <option value="2-0">Grabación 1</option>
-                <option value="2-1">Grabación 2</option>
-                <option value="2-2">Grabación 3</option>              
-              </select>
-            </h2>
-            <span id="graphLeft2">
-              <canvas id="renderRadarChart2"></canvas>
-            </span>
-            <h4>Opciones a mostrar:</h4>
-            <span id="optionsScenary2">
-              <button id="changeChart2Scatter2" value="2-0">Descriptor Puntos</button>               
-            </span>
-        </figure>
-
-        <figure class="figureScenary" id="figure">
-            <h2>Información del Escenario:
-                <select id="featuresOptions2">
-                    <option value="yearPeriod-2-0">Periodo del Año</option>
-                    <option value="urbanContext-2-0">Contexto Urbano</option>
-                    <option value="acousticQuality-2-0">Calidad Acústica</option>
-                    <option value="soundscapeTime-2-0">Tiempo en el Ambiente Sonoro</option>               
-                </select>
-            </h2>
-            <span id="graphRight2">
-              <canvas id="renderPieChart2"></canvas>
-            </span>
-            <span id="summaryFeatureOption2">
-
-            </span>
-        </figure>
-    </section>
-    </div>
-    <br>
-    <div id="scenaryGraph3" style="background-color: #191919;display: none;">
-      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Escenario 3: <b id="scenaryName3">Escenario 3</b></h2>
-      <section class="cols-2">        
-        <figure class="figureScenary" id="figure">
-            <h2>Comparativa entre grabaciones:
-              <select id="recordingOptions3">
-                <option value="3-0">Grabación 1</option>
-                <option value="3-1">Grabación 2</option>
-                <option value="3-2">Grabación 3</option>              
-              </select>
-            </h2>
-            <span id="graphLeft3">
-              <canvas id="renderRadarChart3"></canvas>
-            </span>
-            <h4>Opciones a mostrar:</h4>
-            <span id="optionsScenary3">
-              <button id="changeChart2Scatter3" value="3-0">Descriptor Puntos</button>             
-            </span>
-        </figure>
-
-        <figure class="figureScenary" id="figure">
-          <h2>Información del Escenario:
-            <select id="featuresOptions3">
-                <option value="yearPeriod-3-0">Periodo del Año</option>
-                <option value="urbanContext-3-0">Contexto Urbano</option>
-                <option value="acousticQuality-3-0">Calidad Acústica</option>
-                <option value="soundscapeTime-3-0">Tiempo en el Ambiente Sonoro</option>               
-            </select>
-        </h2>
-        <span id="graphRight3">
-          <canvas id="renderPieChart3"></canvas>
-        </span>
-        <span id="summaryFeatureOption3">
-
-        </span>
-        </figure>
-    </section>
-    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>

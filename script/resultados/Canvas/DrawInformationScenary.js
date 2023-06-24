@@ -91,7 +91,7 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
     new Chart(idChart, { type: 'doughnut', data, options })
 
 }
-
+/*
 document.querySelector('#featuresOptions1').onchange = e => {
 
     const { value: property, text: label } = e.target.selectedOptions[0]
@@ -112,4 +112,4 @@ document.querySelector('#featuresOptions3').onchange = e => {
     const [option, place,recording] = property.split('-')
     document.getElementById("graphRight"+place).innerHTML = '<canvas id="renderPieChart'+place+'"></canvas>'
     drawInformationScenary(place,recording,option)
-}
+}*/

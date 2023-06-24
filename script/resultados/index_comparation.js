@@ -63,13 +63,10 @@ function Draw() {
     for (let numberPlace = 1; numberPlace <= numberTotalPlaces; numberPlace++) {
         document.getElementById("scenaryGraph"+(numberPlace)).style.display = "block";
         let position = (numberPlace-1)*numberTotalRecordings;
-        document.getElementById("recordingOptions"+numberPlace).innerHTML = "";
-        
-        for (let numberRecording = 1; numberRecording <= numberTotalRecordings; numberRecording++) {
-            document.getElementById("recordingOptions"+numberPlace).innerHTML += ' <option value="'+numberPlace+'-'+(numberRecording-1)+'">Grabación '+numberRecording+'</option>';        
-        }
         document.getElementById("scenaryName"+numberPlace).innerHTML = quiz_info[0][1][position]["Name_Scenary"];
-        drawInformationScenary(numberPlace,0,"yearPeriod") 
-        drawScenaryGraph(numberPlace,0)           
+        for (let numberRecording = 1; numberRecording <= numberTotalRecordings; numberRecording++) {
+            drawRadarComparationGraph(numberPlace,numberRecording-1)    
+        }
+       
     }
 }   

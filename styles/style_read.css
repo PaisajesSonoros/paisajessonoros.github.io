@@ -56,3 +56,6 @@ button[id^=button_select_quiz]:hover{
     background-color: rgb(139, 139, 139);
     color: #000000;
 }
+select[id^="featuresOptions"]{
+    width: 15vw;
+}
