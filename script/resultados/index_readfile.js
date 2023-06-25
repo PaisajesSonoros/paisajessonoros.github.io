@@ -7,6 +7,9 @@ var quiz_info = [];
 var audio_info = [];
 var video_info = [];
 var all_info = [];
+var audio_Marcos_info = [];
+var video_Marcos_info = [];
+var all_Marcos_info = [];
 var info_table = document.getElementById("info_table");
 
 let urlAudio = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/Audio.json'
@@ -35,17 +38,50 @@ function saveAllData(data) {
     all_info = data;
 }
 
+let urlMarcosAudio = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/MarcosAudio.json'
+fetch(urlMarcosAudio)
+    .then(response => response.json())
+    .then(data => saveAudioMarcosData(data))
+    .catch(error => console.log(error));
+function saveAudioMarcosData(data) {
+    audio_Marcos_info = data;
+}
+let urlMarcosVideo = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/MarcosVideo.json'
+fetch(urlMarcosVideo)
+    .then(response => response.json())
+    .then(data => saveVideoMarcosData(data))
+    .catch(error => console.log(error));
+function saveVideoMarcosData(data) {
+    video_Marcos_info = data;
+}
+
+let urlAllMarcosQuizs = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/MarcosTodos.json'
+fetch(urlAllMarcosQuizs)
+    .then(response => response.json())
+    .then(data => saveAllMarcosData(data))
+    .catch(error => console.log(error));
+function saveAllMarcosData(data) {
+    all_Marcos_info = data;
+}
+
+
 function SelectQuiz(nameQuiz) {
     let quiz = [];
     if (nameQuiz == "Audio") {
         quiz = audio_info;
     }else if (nameQuiz == "Ambos") {
         quiz = all_info;
-    }else{
+    }else if (nameQuiz == "Video"){
         quiz = video_info;
+    }else if (nameQuiz == "MarcosAudio") {
+        quiz = audio_Marcos_info;
+    }else if (nameQuiz == "MarcosAmbos") {
+        quiz = all_Marcos_info;
+    }else if (nameQuiz == "MarcosVideo"){
+        quiz = video_Marcos_info;
     }
     // Borramos lo que tuviese canvas antes.
-    resetAllCanvas()
+    resetAllResultCanvas()
     TreatmentFileQuiz(quiz);
 }
 
