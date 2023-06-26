@@ -54,7 +54,7 @@ function drawParticipantGraph(option) {
                     color: 'white',
                     text: 'Cantidad de Cuestionarios TESTWHO con esa nota',
                     font: {
-                        size: 10,
+                        size: 20,
                         family:"'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
                     }
                   }
@@ -92,7 +92,6 @@ function drawParticipantGraph(option) {
             newData[index] = counterParticipant[index].count;            
         }
         const data = {
-            //labels: uniqueModels,
             labels: label,
             datasets: [{
                 //-- Extrae del array de modelos de montañas rusas, el número que hay por cada una.
@@ -177,7 +176,9 @@ function drawComparationParticipantGraph(option) {
     var uniqueModels1;
     var uniqueModels2;
     var label = [];
+    console.info(option)
     if (option == 0) {
+
         statementTitle = 'La puntuación obtenida en el test HearWHO:'
         statement = "Introduce aquí tu puntuación auditiva obtenida en el test hearWHO";
         uniqueModels1 = [...new Set(quiz_info.map(quiz_info => quiz_info[0][statement]))].sort();
@@ -191,7 +192,7 @@ function drawComparationParticipantGraph(option) {
             uniqueModels2[index] =  quiz_Marcos_info[index][0][statement];
         }
         titleX = 'Notas del Cuestionario TESTWHO';
-        titleY = 'Cantidad de Cuestionarios TESTWHO con esa nota';
+        titleY = 'Porcentaje (0-1) de Cuestionarios TESTWHO con esa nota';
     }else{
         const uniqueStatement = [...new Set(quiz_info.map(statement => statement[2]))]
         statementTitle = Object.keys(Object.values(uniqueStatement)[0][0])[option-1]
@@ -202,13 +203,7 @@ function drawComparationParticipantGraph(option) {
         uniqueModels = [...new Set(uniqueModels.map(uniqueModels => uniqueModels))].sort();
         //-- Sacamos las opciones a mostrar.
         labelOptions = uniqueModels;
-        /*
-        for (let index = 0; index < labelOptions.length; index++) {
-            final = labelOptions[index];
-            final = final.replace('_', ' ').charAt(0).toUpperCase() + final.replace('_', ' ').slice(1)
-            label[index] = final;
-        }*/
-        console.table(labelOptions)
+
         for (let index = 0; index < labelOptions.length; index++) {
             label[index] = editLabel(option,labelOptions[index])
         }
@@ -222,7 +217,7 @@ function drawComparationParticipantGraph(option) {
         }
 
         titleX = 'Opciones seleccionadas entre las preguntas';
-        titleY = 'Cantidad de Cuestionarios con esa opción.';
+        titleY = 'Porcentaje de Cuestionarios con esa opción.';
     }
 
 
@@ -239,7 +234,7 @@ function drawComparationParticipantGraph(option) {
 
     counterTestWHO1.map((countSpec, i) =>{
         const actualSpecLength = uniqueModels1.filter(number => number === countSpec.number).length;
-        countSpec.count = actualSpecLength;
+        countSpec.count = actualSpecLength/quiz_info.length;
     })
 
     if (option == 0) {
@@ -254,7 +249,7 @@ function drawComparationParticipantGraph(option) {
 
     counterTestWHO2.map((countSpec, i) =>{
         const actualSpecLength = uniqueModels2.filter(number => number === countSpec.number).length;
-        countSpec.count = actualSpecLength;
+        countSpec.count = actualSpecLength/quiz_Marcos_info.length;
     })
 
     const data = {
@@ -302,10 +297,11 @@ function drawComparationParticipantGraph(option) {
                 color: 'white',
                 text: titleY,
                 font: {
-                    size: 10,
+                    size: 25,
                     family:"'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
                 }
-              }
+              },
+              ticks: { color: 'white'}
             }
           }
     }

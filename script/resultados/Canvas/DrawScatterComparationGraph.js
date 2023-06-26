@@ -256,7 +256,7 @@ function drawRadarComparationGraph(numberPlace,numberRecording) {
                 min:0,
                 max:1,
                 angleLines: {
-                    display: true,
+                    display: false,
                     color: "white"
                 },
                 grid:{
@@ -269,9 +269,6 @@ function drawRadarComparationGraph(numberPlace,numberRecording) {
                 pointLabels: {
                     color: 'white'
                   },
-            },
-            tricks:{
-                display: true
             }
         }
     }
