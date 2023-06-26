@@ -255,7 +255,7 @@ function drawComparationParticipantGraph(option) {
     const data = {
         labels: label,
         datasets: [{
-            label:"Manuel",
+            label:"Evaluación Remoto",
             data: counterTestWHO1.map(testWHO => testWHO.count),
             tension: .9,
             borderColor: getDataColors()[5],
@@ -263,7 +263,7 @@ function drawComparationParticipantGraph(option) {
             fill: true,
             pointBorderWidth: 5
         },{
-            label:"Marcos",
+            label:"Evaluación Laboratorio",
             data: counterTestWHO2.map(testWHO => testWHO.count),
             tension: .9,
             borderColor: getDataColors()[2],

@@ -150,7 +150,7 @@ function drawComparationChronologyGraph() {
             fill: true,
             pointBorderWidth: 5
         },{
-            label:'Manuel',
+            label:'Evaluación en Remoto',
             data: counterDates1.map(dates => dates.count),
             tension: .5,
             borderColor: getDataColors()[1],
@@ -158,7 +158,7 @@ function drawComparationChronologyGraph() {
             fill: true,
             pointBorderWidth: 5
         },{
-            label:'Marcos',
+            label:'Evaluación en Laboratorio',
             data: counterDates2.map(dates => dates.count),
             tension: .5,
             borderColor: getDataColors()[2],

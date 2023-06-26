@@ -82,21 +82,21 @@ function drawScatterComparationGraph(numberPlace,numberRecording) {
     const data = {
         labels: ['Dinámico', 'Agradable','Estático','Molesto'],
         datasets: [{
-            label:"Manuel Coordenadas",
+            label:"Coordenadas de Evaluación en remoto",
             type: 'scatter',
             data: DataManuel,
             borderColor: getDataColors()[colorManuel],
             backgroundColor: getDataColors(90)[colorManuel],
             order:3
         },{
-            label:"Marcos Coordenadas",
+            label:"Coordenadas de Evaluación en Laboratorio",
             type: 'scatter',
             data: DataMarcos,
             borderColor: getDataColors()[colorMarcos],
             backgroundColor: getDataColors(90)[colorMarcos],
             order:3
         },{
-            label:"Coordenadas de ambos cuestionarios",
+            label:"Coordenadas de ambos tipos de cuestionarios",
             type:"radar",
             data:[],
             borderColor: getDataColors()[10],
@@ -215,14 +215,14 @@ function drawRadarComparationGraph(numberPlace,numberRecording) {
     const data = {
         labels: ['Dinámico', 'Agradable','Estático','Molesto'],
         datasets: [{
-            label:"Manuel Diagrama",
+            label:"Diagrama Evaluación en Remoto",
             type: 'radar',
             data: mediumDataManuel,
             borderColor: getDataColors()[numberRecording],
             backgroundColor: getDataColors(10)[numberRecording],
             order:2
         },{
-            label:"Marcos Diagrama",
+            label:"Diagrama Evaluación en Laboratorio",
             type: 'radar',
             data: mediumDataMarcos,
             borderColor: getDataColors()[numberRecording+3],
