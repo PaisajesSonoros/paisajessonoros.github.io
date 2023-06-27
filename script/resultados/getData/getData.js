@@ -49,7 +49,7 @@ function saveMVideoData(data) {
     video_Marcos_info = data;
 }
 
-let urlMarcosAllQuizs = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/todosQuizMarcos.json'
+let urlMarcosAllQuizs = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/MarcosTodos.json'
 fetch(urlMarcosAllQuizs)
     .then(response => response.json())
     .then(data => saveMAllData(data))
