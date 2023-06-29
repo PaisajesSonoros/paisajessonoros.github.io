@@ -179,7 +179,7 @@ function drawComparationParticipantGraph(option) {
     console.info(option)
     if (option == 0) {
 
-        statementTitle = 'La puntuación obtenida en el test HearWHO en porcentaje (0-1):'
+        statementTitle = 'La puntuación obtenida en el test HearWHO en porcentaje:'
         statement = "Introduce aquí tu puntuación auditiva obtenida en el test hearWHO";
         uniqueModels1 = [...new Set(quiz_info.map(quiz_info => quiz_info[0][statement]))].sort();
         uniqueModels2 = [...new Set(quiz_Marcos_info.map(quiz_Marcos_info => quiz_Marcos_info[0][statement]))].sort();
@@ -192,7 +192,7 @@ function drawComparationParticipantGraph(option) {
             uniqueModels2[index] =  quiz_Marcos_info[index][0][statement];
         }
         titleX = 'Notas del Cuestionario TESTWHO';
-        titleY = 'Porcentaje (0-1) con esa nota';
+        titleY = 'Porcentaje (%) con esa nota';
     }else{
         const uniqueStatement = [...new Set(quiz_info.map(statement => statement[2]))]
         statementTitle = Object.keys(Object.values(uniqueStatement)[0][0])[option-1]
@@ -217,7 +217,7 @@ function drawComparationParticipantGraph(option) {
         }
 
         titleX = 'Opciones seleccionadas entre las preguntas';
-        titleY = 'Porcentaje de cada opción.';
+        titleY = 'Porcentaje (%) de cada opción.';
     }
 
 
@@ -234,7 +234,7 @@ function drawComparationParticipantGraph(option) {
 
     counterTestWHO1.map((countSpec, i) =>{
         const actualSpecLength = uniqueModels1.filter(number => number === countSpec.number).length;
-        countSpec.count = actualSpecLength/quiz_info.length;
+        countSpec.count = (actualSpecLength/quiz_info.length)*100;
     })
 
     if (option == 0) {
@@ -249,7 +249,7 @@ function drawComparationParticipantGraph(option) {
 
     counterTestWHO2.map((countSpec, i) =>{
         const actualSpecLength = uniqueModels2.filter(number => number === countSpec.number).length;
-        countSpec.count = actualSpecLength/quiz_Marcos_info.length;
+        countSpec.count = (actualSpecLength/quiz_Marcos_info.length)*100;
     })
 
     const data = {
@@ -292,6 +292,7 @@ function drawComparationParticipantGraph(option) {
             },
             y: {
               beginAtZero: true,
+              max:100,
               title: {
                 display: true,
                 color: 'white',
