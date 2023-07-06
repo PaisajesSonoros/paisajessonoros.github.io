@@ -31,14 +31,16 @@ canvas[id^="participantChart"]{
     height: 40vh;
 }
 
-canvas[id^="renderRadarChart"],canvas[id^="renderPieChart"]{
+canvas[id^="renderRadarChart"],canvas[id^="renderPieChart"],canvas[id^="CitiesrenderBarQualityChart"],
+canvas[id^="CitiesrenderBarSeasonChart"],canvas[id^="CitiesrenderBarContextChart"]{
     width: 25vi;
     height: 25vi;
 }
 canvas[id^="CitiesrenderRadarChart"],canvas[id^="CitiesrenderPieChart"]{
-    width: 50vi;
-    height: 50vi;
+    width: 40vi;
+    height: 40vi;
 }
+
 section[class^="cols-1"]{
     width: max-content;
     background-color: rgba(0,0,0,0.3);
