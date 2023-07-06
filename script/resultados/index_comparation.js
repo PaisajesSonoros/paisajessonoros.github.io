@@ -12,6 +12,24 @@ function CompareQuizs() {
     TreatmentFileQuiz(quiz_info,quiz_Marcos_info)
 }
 
+function CompareQuizsVisual() {
+    quiz_info = audio_info;
+    quiz_Marcos_info = video_info;
+    resetAllCanvas();   
+    TreatmentFileQuizVisual(quiz_info,quiz_Marcos_info)
+}
+
+function TreatmentFileQuizVisual(informationFirstQuiz,informationSecondQuiz) {
+    //-- Pasamos a una variable global toda la información sobre los cuestionarios realizados.
+    quiz_info = informationFirstQuiz;
+    quiz_Marcos_info = informationSecondQuiz;
+
+    //document.getElementById("lastQuestion").innerHTML = last_user_results();
+
+    // Añadimos las gráficas.
+    Draw();
+}
+
 function TreatmentFileQuiz(informationFirstQuiz,informationSecondQuiz) {
     document.getElementById("option_name_quiz").innerHTML = name_quiz.split(".")[0];
     //-- Pasamos a una variable global toda la información sobre los cuestionarios realizados.

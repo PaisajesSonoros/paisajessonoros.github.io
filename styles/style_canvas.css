@@ -35,6 +35,10 @@ canvas[id^="renderRadarChart"],canvas[id^="renderPieChart"]{
     width: 25vi;
     height: 25vi;
 }
+canvas[id^="CitiesrenderRadarChart"],canvas[id^="CitiesrenderPieChart"]{
+    width: 50vi;
+    height: 50vi;
+}
 section[class^="cols-1"]{
     width: max-content;
     background-color: rgba(0,0,0,0.3);

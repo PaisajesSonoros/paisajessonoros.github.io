@@ -5,6 +5,12 @@ function resetAllCanvas() {
     //Reseteamos el canvas de los graficos del participante
     document.getElementById("participantCanvas").innerHTML = '<canvas id="participantChart"></canvas>';
 }
+
+function resetCanvasCities() {
+    // Primer Gráfico izquierdo - reset
+    document.getElementById("graphDescriptors").innerHTML = '<canvas id="renderRadarChartCities"></canvas>';
+}
+
 function resetAllResultCanvas() {
     //Reseteamos la cronología.
     document.getElementById("chronologyCanvas").innerHTML = '<canvas id="chronologyChart"></canvas>';

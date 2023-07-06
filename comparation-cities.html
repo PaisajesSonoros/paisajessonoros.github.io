@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Hoja de estilo de la interfaz -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style_nav.css">
+    <link rel="stylesheet" href="./styles/style_read.css">
+    <link rel="stylesheet" href="./styles/style_canvas.css">
+
+    <!-- Cargar el proceso asociado a esta página -->
+    <script src="./script/resultados/comparation_cities.js" defer></script>
+    <script src="./script/resultados/getData/getData.js" defer></script>
+
+    <script src="./script/resultados/Treatment of Quiz Questions/SelectOptionReadFile.js" defer></script>
+    <script src="./script/resultados/Canvas/resetCanvas.js" defer></script>
+
+    <script src="./script/resultados/Canvas/DrawScenaryComparationGraph.js" defer></script>
+    <script src="./script/resultados/Canvas/FunctionsCanvas.js" defer></script>
+    <script src="./script/resultados/Canvas/DrawScatterComparationGraph.js" defer></script>
+    <script src="./script/resultados/Canvas/DrawScenaryCities.js" defer></script>
+
+    <title>Soundscape Questionnaire</title>
+</head>
+<body>
+    <nav class="nav container" style="height: 50px;">
+        <span class="nav__logo">
+            <img style="height: 30px;" src="./styles/images/logo_urjc.png" alt="URJC LOGO">
+        </span>
+        <ul class="nav__list">
+    
+          <li class="nav__item">
+            <a href="index.html" class="nav__link"><b>Inicio</b></a>
+          </li>    
+          <li class="nav__item">
+            <a href="resultados.html" class="nav__link" ><b>Resultados</b></a>
+          </li>
+          <li class="nav__item">
+            <a href="comparation.html" class="nav__link"><b>Comparar Resultados</b></a>
+          </li>
+          <li class="nav__item">
+            <a href="comparation-cities.html" class="nav__link"><b>Comparar Ciudades</b></a>
+          </li>
+          <li class="nav__item">
+            <a href="comparation-visual.html" class="nav__link"><b>Influencia Apoyo Visual</b></a>
+          </li>    
+          <li class="nav__item">
+            <a href="#" class="nav__link" >Contacto</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link" >Ayuda</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link" ></a>
+          </li>
+        </ul>
+      </nav>
+
+  <div style="text-align: center;">
+    <h1>Comparar Resultados de los Cuestionarios</h1>
+    <p>En esta página se puede observar los datos de forma generalizada, observando los porcentajes y los datos de cada pregunta en función del lugar.</p>
+    <p>Seleccione una opción de las tres de la izquierda y luego una de de las tres de la derecha. Luego seleccione "Comparar" para comparar los resultados</p>
+  </div>
+  <div style="text-align: center;">
+    <span>
+      <button id="button_select_quiz0" onclick="SelectQuiz('Audio',0)"><b>Audio Quiz<b></button>
+      <button id="button_select_quiz1" onclick="SelectQuiz('Video',1)"><b>Video Quiz<b></button>
+      <button id="button_select_quiz2" onclick="SelectQuiz('Ambos',2)"><b>Todos Quiz<b></button>
+    </span>
+  </div>
+  <br>
+  <div style="text-align: center;">
+    <button id="button_select_quiz" onclick="CompareQuizs()"><b>Comparar<b></button>
+  </div>
+  <div>
+    <h3 id="option_name_quiz"></h3>
+  </div>
+  <div class="wrapper" id="canvasResult" style="display: block;">
+    <h2>Gráficas sobre el Entorno</h2>
+    <br>
+    <div id="scenaryGraph1" style="background-color: #191919;">
+      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Comparación de descriptores de las Ciudades</b></h2>
+      <section class="cols-1">        
+        <figure class="figureScenary" id="figure">
+            
+            <span id="graphDescriptors">
+              <canvas id="CitiesrenderRadarChart"></canvas>
+            </span>
+            <h4>Opciones a mostrar:</h4>
+            <span id="optionsScenary1">
+              <button id="change2Scatter10" onclick="drawScatterOrRadarCities('scatter',1,0)">Descriptor Puntos</button>
+              <button id="change2Radar10" onclick="drawScatterOrRadarCities('radar',1,0)">Descriptor Radar</button>     
+            </span>
+        </figure>
+      </section>
+    </div>
+    <br>
+    <br>
+    <div id="scenaryGraph2" style="background-color: #191919;">
+      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Comparación de calidad acústica de las Ciudades</b></h2>
+      <h1>Ciutadella vs Mao</h1>
+      <section class="cols-2">   
+        <figure class="figureScenary" id="figure">
+            <span id="graphQualityLeft">
+              <canvas id="CitiesrenderBarQualityChartLeft"></canvas>
+            </span>
+        </figure>
+        <figure class="figureScenary" id="figure">
+          <span id="graphQualityRight">
+            <canvas id="CitiesrenderBarQualityChartRight"></canvas>
+          </span>
+      </figure>
+      </section>
+    </div>
+    <br>
+    <br>
+    <div id="scenaryGraph3" style="background-color: #191919;">
+      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Comparación de identificación de periodos de año de las Ciudades</b></h2>
+      <h1>Ciutadella vs Mao</h1>
+      <section class="cols-2">        
+        <figure class="figureScenary" id="figure">
+            <span id="graphSeasonLeft">
+              <canvas id="CitiesrenderBarSeasonChartLeft"></canvas>
+            </span>
+        </figure>
+        <figure class="figureScenary" id="figure">
+            <span id="graphSeasonRight">
+              <canvas id="CitiesrenderBarSeasonChartRight"></canvas>
+            </span>
+        </figure>
+      </section>
+    </div>
+    <br>
+    <br>
+    <div id="scenaryGraph4" style="background-color: #191919;">
+      <h2 style="height: 10vh; display: flex;justify-content: center;align-items: center;margin: 0;">Comparación de identificación del contexto de las Ciudades</b></h2>
+      <h1>Ciutadella vs Mao</h1>
+      <section class="cols-2">        
+        <figure class="figureScenary" id="figure">
+            <span id="graphContextLeft">
+              <canvas id="CitiesrenderBarContextChartLeft"></canvas>
+            </span>
+        </figure>
+        <figure class="figureScenary" id="figure">
+            <span id="graphContextRight">
+              <canvas id="CitiesrenderBarContextChartRight"></canvas>
+            </span>
+        </figure>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+  <script src="script/resultados/Canvas/helpers.js"></script>
+</body>
+</html>

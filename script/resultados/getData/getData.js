@@ -31,7 +31,7 @@ function saveAllData(data) {
     all_info = data;
 }
 
-// Obtenemos los resultados de ficheros ajenos a Manuel Salcedo Alonso
+// Obtenemos los resultados de ficheros ajenos a Marcos
 let urlMarcosAudio = 'https://raw.githubusercontent.com/SalcedoManuel/Paisajes-Sonoros/main/resultados/MarcosAudio.json'
 fetch(urlMarcosAudio)
     .then(response => response.json())
