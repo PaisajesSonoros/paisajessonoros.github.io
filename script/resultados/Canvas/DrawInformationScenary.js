@@ -27,24 +27,78 @@ function GetOptionNumber(optionText,numberPlace) {
     return option
 }
 
+function editLabel(label) {
+    let text;
+    switch (label) {
+        case "malo":
+            text = "Malo"
+            break;
+        case "bueno":
+            text = "Bueno"
+            break;
+        case "muy_malo":
+            text = "Muy malo"
+            break;
+        case "muy_bueno":
+            text = "Muy bueno"
+            break;
+        case "neutro":
+            text = "Ni bueno ni malo"
+            break;
+        case "comercial":
+            text = "Comercial"
+            break;
+        case "residencial":
+            text = "Residencial"
+            break;
+        case "recreativo":
+            text = "Recreativo"
+            break;
+        case "otro":
+            text = "Otro"
+            break;
+        case "invierno":
+            text = "Invierno"
+            break;
+        case "verano":
+            text = "Verano"
+            break;
+    }
+
+    return text
+}
+
 function drawInformationScenary(numberPlace,numberRecording,optionText) {
 
     var option = GetOptionNumber(optionText,numberPlace);
 
     const numberTotalRecordings = quiz_info[0][0]["Recordings_Number"];
+    const NUMBERTOTALPLACES = quiz_info[0][0]["Places_Number"];
+    const numberPS = NUMBERTOTALPLACES*numberTotalRecordings
+    // Sacamos las etieuetas pero que todas tengan el mismo color.
+    var labelDescriptor = [];
+
+    for (let index = 0; index < numberPS; index++) {
+        labelDescriptor = labelDescriptor.concat([...new Set(quiz_info.map(descriptor => descriptor[1][index]))])       
+    }
+    // Obtenemos los descriptores.
+    var descriptor = Object.keys(labelDescriptor[0])[option]
+
+    // Obtenemos las etiquetas.
+    const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
+
+
     let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));
     const uniqueDescriptor = [...new Set(quiz_info.map(descriptor => descriptor[1][position]))]
     // Obtenemos los descriptores.
-    var descriptor = Object.keys(uniqueDescriptor[0])[option]
+    //var descriptor = Object.keys(uniqueDescriptor[0])[option]
 
     // Obtenemos las etiquetas.
-    const labelOptions = [...new Set(uniqueDescriptor.map(label => label[descriptor]))]
+    //const labelOptions = [...new Set(uniqueDescriptor.map(label => label[descriptor]))]
 
     var label = [];
     for (let index = 0; index < labelOptions.length; index++) {
-        final = labelOptions[index];
-        final = final.replace('_', ' ').charAt(0).toUpperCase() + final.replace('_', ' ').slice(1)
-        label[index] = final;
+        label[index] = editLabel(labelOptions[index])
     }
     //label.sort();
 
