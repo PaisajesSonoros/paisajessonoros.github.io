@@ -88,8 +88,8 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
     const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
 
 
-    let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));
-    const uniqueDescriptor = [...new Set(quiz_info.map(descriptor => descriptor[1][position]))]*/
+    let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));*/
+    const uniqueDescriptor = [...new Set(quiz_info.map(descriptor => descriptor[1][position]))]
     // Obtenemos los descriptores.
     var descriptor = Object.keys(uniqueDescriptor[0])[option]
 
