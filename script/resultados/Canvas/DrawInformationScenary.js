@@ -63,6 +63,21 @@ function editLabel(label) {
         case "verano":
             text = "Verano"
             break;
+        case "bastante":
+            text = 'Pasaría bastante tiempo en un lugar como este';
+            break;
+        case "bien":
+            text = 'Para un rato está bien, pero sin más';
+            break;
+        case 'molesto':
+            text = 'Me molesta un poco y no permanecería mucho tiempo ahí';
+            break;
+        case 'insoportable':
+            text = 'Me parece insoportable y no aguantaría ni 10 minutos';
+            break;
+        case 'encanta':
+            text = 'Me encanta y pasaría el resto de mi vida en este lugar';
+            break;
     }
 
     return text
@@ -76,7 +91,7 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
     const NUMBERTOTALPLACES = quiz_info[0][0]["Places_Number"];
     const numberPS = NUMBERTOTALPLACES*numberTotalRecordings
     // Sacamos las etieuetas pero que todas tengan el mismo color.
-   /* var labelDescriptor = [];
+    var labelDescriptor = [];
 
     for (let index = 0; index < numberPS; index++) {
         labelDescriptor = labelDescriptor.concat([...new Set(quiz_info.map(descriptor => descriptor[1][index]))])       
@@ -88,13 +103,8 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
     const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
 
 
-    let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));*/
+    let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));
     const uniqueDescriptor = [...new Set(quiz_info.map(descriptor => descriptor[1][position]))]
-    // Obtenemos los descriptores.
-    var descriptor = Object.keys(uniqueDescriptor[0])[option]
-
-    // Obtenemos las etiquetas.
-    const labelOptions = [...new Set(uniqueDescriptor.map(label => label[descriptor]))]
 
     var label = [];
     for (let index = 0; index < labelOptions.length; index++) {
