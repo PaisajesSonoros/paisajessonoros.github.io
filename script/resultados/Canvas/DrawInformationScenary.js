@@ -91,37 +91,32 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
     const NUMBERTOTALPLACES = quiz_info[0][0]["Places_Number"];
     const numberPS = NUMBERTOTALPLACES*numberTotalRecordings
     // Sacamos las etiquetas pero que todas tengan el mismo color.
-    //var labelDescriptor = [];
+    var labelDescriptor = [];
 
-    //for (let index = 0; index < numberPS; index++) {
-    //    labelDescriptor = labelDescriptor.concat([...new Set(quiz_info.map(descriptor => descriptor[1][index]))])       
-    //}
+    for (let index = 0; index < numberPS; index++) {
+        labelDescriptor = labelDescriptor.concat([...new Set(quiz_info.map(descriptor => descriptor[1][index]))])       
+    }
     // Obtenemos los descriptores.
-    //var descriptor = Object.keys(labelDescriptor[0])[option]
+    var descriptor = Object.keys(labelDescriptor[0])[option]
 
     // Obtenemos las etiquetas.
-    //const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
+    const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
 
 
     let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));
     const uniqueDescriptor = [...new Set(quiz_info.map(descriptor => descriptor[1][position]))]
-    // Obtenemos los descriptores
-    var descriptor = Object.keys(uniqueDescriptor[0])[option]
-    // Obtenemos las etiquetas.
-    const labelOptions = [...new Set(uniqueDescriptor.map(label => label[descriptor]))]
+    
     var label = [];
     for (let index = 0; index < labelOptions.length; index++) {
-        final = labelOptions[index];
-        final = final.replace('_', ' ').charAt(0).toUpperCase() + final.replace('_', ' ').slice(1)
-        label[index] = final;
+        label[index] = editLabel(labelOptions[index])
     }
-    //label.sort();
 
     var newData = [];
-    for (let index = 0; index < uniqueDescriptor.length; index++) {
-        const element = uniqueDescriptor[index];
+    for (let e = 0; e < uniqueDescriptor.length; e++) {
+        const element = uniqueDescriptor[e];
         //-- Recorremos los descriptores. Si coincide, sumamos uno en su contador
         for (let index = 0; index < labelOptions.length; index++) {
+           // console.info(element[descriptor], labelOptions[index])
             if (element[descriptor] == labelOptions[index]) {
                 if (newData[index] == undefined) {
                     let initValue = Math.floor(1);
@@ -132,6 +127,12 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
             }
         }
     }
+    for (let index = 0; index < label.length; index++) {
+        if (newData[index] == undefined) {
+            newData[index] = 0;
+        }        
+    }
+    console.table(newData)
     const data = {
         //labels: uniqueModels,
         labels: label,
