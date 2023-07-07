@@ -90,25 +90,30 @@ function drawInformationScenary(numberPlace,numberRecording,optionText) {
     const numberTotalRecordings = quiz_info[0][0]["Recordings_Number"];
     const NUMBERTOTALPLACES = quiz_info[0][0]["Places_Number"];
     const numberPS = NUMBERTOTALPLACES*numberTotalRecordings
-    // Sacamos las etieuetas pero que todas tengan el mismo color.
-    var labelDescriptor = [];
+    // Sacamos las etiquetas pero que todas tengan el mismo color.
+    //var labelDescriptor = [];
 
-    for (let index = 0; index < numberPS; index++) {
-        labelDescriptor = labelDescriptor.concat([...new Set(quiz_info.map(descriptor => descriptor[1][index]))])       
-    }
+    //for (let index = 0; index < numberPS; index++) {
+    //    labelDescriptor = labelDescriptor.concat([...new Set(quiz_info.map(descriptor => descriptor[1][index]))])       
+    //}
     // Obtenemos los descriptores.
-    var descriptor = Object.keys(labelDescriptor[0])[option]
+    //var descriptor = Object.keys(labelDescriptor[0])[option]
 
     // Obtenemos las etiquetas.
-    const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
+    //const labelOptions = [...new Set(labelDescriptor.map(label => label[descriptor]))]
 
 
     let position = Math.floor(((numberPlace-1)*numberTotalRecordings)+Math.floor(numberRecording));
     const uniqueDescriptor = [...new Set(quiz_info.map(descriptor => descriptor[1][position]))]
-
+    // Obtenemos los descriptores
+    var descriptor = Object.keys(uniqueDescriptor[0])[option]
+    // Obtenemos las etiquetas.
+    const labelOptions = [...new Set(uniqueDescriptor.map(label => label[descriptor]))]
     var label = [];
     for (let index = 0; index < labelOptions.length; index++) {
-        label[index] = editLabel(labelOptions[index])
+        final = labelOptions[index];
+        final = final.replace('_', ' ').charAt(0).toUpperCase() + final.replace('_', ' ').slice(1)
+        label[index] = final;
     }
     //label.sort();
 
